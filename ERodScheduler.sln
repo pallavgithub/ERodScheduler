@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERodScheduler", "ERodScheduler\ERodScheduler.csproj", "{B67F8D7D-3B70-4008-9826-2F082B350FD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B67F8D7D-3B70-4008-9826-2F082B350FD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B67F8D7D-3B70-4008-9826-2F082B350FD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B67F8D7D-3B70-4008-9826-2F082B350FD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B67F8D7D-3B70-4008-9826-2F082B350FD3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB535D19-4741-4CBA-8151-88CA5F88EE05}
+	EndGlobalSection
+EndGlobal
