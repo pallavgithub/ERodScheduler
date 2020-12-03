@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ERodScheduler.FishBowlServerObjects;
+using System;
 
 namespace ERodScheduler
 {
@@ -7,6 +8,18 @@ namespace ERodScheduler
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            try
+            {
+                FishBowlServer fishBowlServer = new FishBowlServer();
+                string loginResponse = fishBowlServer.Connect("222", "ERod", "ERod", "rodapp", "algoeoe");
+                string key = fishBowlServer.GetTicket(loginResponse);
+                string response = fishBowlServer.ExecuteQuery(key, "<GetSOListRq></GetSOListRq>");
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }
