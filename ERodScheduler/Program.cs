@@ -1,26 +1,39 @@
-﻿using ERodScheduler.FishBowlServerObjects;
+﻿using System.Threading;
+using System.ServiceProcess;
 using System;
 
 namespace ERodScheduler
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello ERod!");
+		private static readonly ManualResetEvent ResetEvent = new ManualResetEvent(false);
 
-            try
+		static void Main(string[] args)
+		{
+            if (!Environment.UserInteractive)
             {
-                FishBowlServer fishBowlServer = new FishBowlServer();
-                string loginResponse = fishBowlServer.Connect("222", "C Sharp Sample", "ERod", "rodapp", "algoeoe");
-                string key = fishBowlServer.GetTicket(loginResponse);
-                string response = fishBowlServer.ExecuteQuery(key, "<GetSOListRq></GetSOListRq>");
+                WaitEnterButtonClickAsync();
+                var service = new ErodDataService();
+                service.ServiceStart(args);
+                ResetEvent.WaitOne();
+                service.Stop();
             }
-            catch (Exception ex)
+            else
             {
-
+                Thread.CurrentThread.Name = "ServiceThread";
+                var servicesToRun = new ServiceBase[] { new ErodDataService() };
+                ServiceBase.Run(servicesToRun);
             }
-            Console.ReadLine();
         }
-    }
+
+		private static void WaitEnterButtonClickAsync()
+		{
+			ThreadPool.QueueUserWorkItem(parameters =>
+			{
+				Console.Read();
+				ResetEvent.Set();
+			});
+		}
+
+	}
 }
